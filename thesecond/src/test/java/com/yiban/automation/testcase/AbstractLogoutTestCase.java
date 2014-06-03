@@ -7,9 +7,9 @@ import static org.junit.Assert.assertThat;
 import com.yiban.automation.pageobject.LoginPage;
 import com.yiban.automation.utils.WebDriverWrapper;
 
-public class AbstractLoginTestCase extends AbstractBaseTestCase {
+public class AbstractLogoutTestCase extends AbstractBaseTestCase {
 
-    public void Login(String username, String password) {
+    public void Loginandout(String username, String password) {
   /*      Student stu = students.get(mode);
       //  String schoolName = stu.getSchoolName();
         /* choose school 
@@ -47,6 +47,9 @@ public class AbstractLoginTestCase extends AbstractBaseTestCase {
  //       libraryPage.exitRaweb();
     	LoginPage loginPage = new LoginPage(driver);
     	loginPage.login(username, password);
+    	System.out.println("oh");
+    	loginPage.logout();
+
     }
 
 }

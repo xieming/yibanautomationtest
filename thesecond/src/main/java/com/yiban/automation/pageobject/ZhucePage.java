@@ -1,5 +1,8 @@
 package com.yiban.automation.pageobject;
 
+import java.util.NoSuchElementException;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -136,9 +139,37 @@ public class ZhucePage extends Page {
 		WebDriverWrapper.waitPageLoad(driver, 3);
 		System.out.println("hello");
 		zcyouxiang(email);
+		if (driver.findElement(By.xpath("//form/div[1]/span[2]/table/tbody/tr/td")) != null) {
+			System.out.println("您输入的账号或密码不正确，请重新输入");
+		}
+	/*	try{	
+            driver.findElement(By.xpath("//form/div[1]/span[2]/table/tbody/tr/td"));
+            System.out.println("请输入正确的邮箱地址");
+        } catch(NoSuchElementException e){
+            System.out.println("reg_ml_tips does not exist");
+        }
+        */
 		zcschool();
+        try{
+            driver.findElement(By.xpath("//form/div[2]/div[1]/span[2]/table/tbody/tr/td"));
+            System.out.println("请选择你的学校");
+        } catch(NoSuchElementException e){
+            System.out.println("reg_ml_tips does not exist");
+        }
 		zcxueyuan();
-		zcnicheng(nichen);
+        try{
+            driver.findElement(By.xpath("//form/div[2]/div[1]/span[2]/table/tbody/tr/td"));
+            System.out.println("请在弹框中选择学院");
+        } catch(NoSuchElementException e){
+            System.out.println("reg_ml_tips does not exist");
+        }
+        zcnicheng(nichen);
+        try{
+            driver.findElement(By.xpath("//form/div[3]/span[1]"));
+            System.out.println("非法昵称，昵称为4-17个字符的中文、英文或者数字");
+        } catch(NoSuchElementException e){
+            System.out.println("reg_ml_tips does not exist");
+        }
 		zcpwd(password);
 		zccomfirmpwd(conpwd);
 		sentyzmButton();
